@@ -45,6 +45,13 @@ struct ContentView: View {
             .tabItem {
                 Label("Recipes", systemImage: "newspaper")
             }
+            Text("Pizza")
+                .tabItem {
+                    Label(
+                        title: { Text("Pizza's") },
+                        icon: { Image(.pizzaIcon).imageScale(.small) }
+                    )
+                }
         }
 
     }
