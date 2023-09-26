@@ -69,10 +69,9 @@ struct RecipeViewer: View {
             Row("Olive oil", recipe.oliveOil, calculatedRecipe.oliveOil, colWidth)
         }
         .padding()
-        .background(.white)
-        //.foregroundColor()
+        .background(.background)
         .cornerRadius(20)
-        .shadow(color: Color.black.opacity(0.2), radius: 4)
+        .shadow(radius: 4)
         .monospacedDigit()
     }
 }

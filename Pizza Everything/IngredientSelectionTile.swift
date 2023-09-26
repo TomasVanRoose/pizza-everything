@@ -14,6 +14,7 @@ struct IngredientSelectionTile: View {
     let unit: String
     let precision: Int
     
+    @State private var feedback = UINotificationFeedbackGenerator()
     @Binding var value: Float
     
     init(title: String, minVal: Float, maxVal: Float, unit: String, precision: Int = 0, value: Binding<Float>) {

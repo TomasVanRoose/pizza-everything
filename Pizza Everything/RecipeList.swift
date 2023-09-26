@@ -17,6 +17,24 @@ struct RecipeList: View {
     var body: some View {
         NavigationView {
             VStack {
+                ZStack(alignment: .bottom) {
+                    Image(.pizzaHeader)
+                        .resizable()
+                        .frame(height: 300)
+                        .bottomBlur()
+                        .overlay(alignment: .bottomLeading) {
+                            VStack(alignment: .leading) {
+                                Text("Pizza")
+                                    .font(.largeTitle)
+                                    .bold()
+                                    .foregroundStyle(.white)
+                                Text("Flour, Water, Yeast, Salt")
+                                    .foregroundStyle(.white)
+                                    .opacity(0.8)
+                            }.padding()
+                        }
+                }
+                
                 IngredientSelectionTile(title: "Number of doughs", minVal: 1, maxVal: 10, unit: "", value: $numberOfBalls).padding(.horizontal)
                 IngredientSelectionTile(title: "Weight of 1 pizza dough", minVal: 100, maxVal: 350, unit: "g", value: $totalWeight)
                     .padding(.horizontal)
@@ -34,12 +52,17 @@ struct RecipeList: View {
                         showNewRecipe.toggle()
                     } label: {
                         Image(systemName: "plus")
+                            .foregroundStyle(.gray)
+                            .padding(3)
+                            .background(.white)
+                            .clipShape(Circle())
                     }
                 }
             }
             .sheet(isPresented: $showNewRecipe) {
                 NewRecipeView()
             }
+            .ignoresSafeArea()
         }
     }
 }
