@@ -47,10 +47,11 @@ struct ContentView: View {
             }
             Text("Pizza")
                 .tabItem {
-                    Label(
-                        title: { Text("Pizza's") },
-                        icon: { Image(.pizzaIcon).imageScale(.small) }
-                    )
+                    Image(.pizzaIcon)
+                        .resizable()
+                        .frame(width: 35, height: 35)
+                        .scaledToFit()
+                    Text("Pizza")
                 }
         }
 

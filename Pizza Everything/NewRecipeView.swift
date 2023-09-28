@@ -10,6 +10,7 @@ import SwiftUI
 struct NewRecipeView: View {
     
     @Environment(\.dismiss) private var dismiss
+    @State private var draftRecipe = Recipe(title: "", hydration: 58, salt: 3, freshYeast: 0.55, sugar: 0, oliveOil: 0)
     
     @State private var fresh = true
     @State private var title = ""
@@ -22,12 +23,12 @@ struct NewRecipeView: View {
     
     var body: some View {
         
-        let hydrationTile = IngredientSelectionTile(title: "Hydration", minVal: 50, maxVal: 100, unit: "%", precision: 2, value: $hydration)
-        let saltTile = IngredientSelectionTile(title: "Salt", minVal: 1, maxVal: 4, unit: "%", precision: 2, value: $salt)
-        let freshYeastTile = IngredientSelectionTile(title: "", minVal: 0.01, maxVal: 1, unit: "%", precision: 2, value: $freshYeast)
+        let hydrationTile = IngredientSelectionTile(title: "Hydration", minVal: 50, maxVal: 100, unit: "%", precision: 2, value: $draftRecipe.hydration)
+        let saltTile = IngredientSelectionTile(title: "Salt", minVal: 1, maxVal: 4, unit: "%", precision: 2, value: $draftRecipe.salt)
+        let freshYeastTile = IngredientSelectionTile(title: "", minVal: 0.01, maxVal: 1, unit: "%", precision: 2, value: $draftRecipe.freshYeast)
         let dryYeastTile = IngredientSelectionTile(title: "", minVal: 0.01, maxVal: 3, unit: "%", precision: 2, value: $dryYeast)
-        let sugarTile = IngredientSelectionTile(title: "Sugar", minVal: 0, maxVal: 4, unit: "%", precision: 2, value: $sugar)
-        let oliveOilTile = IngredientSelectionTile(title: "Olive oil", minVal: 0, maxVal: 4, unit: "%", precision: 2, value: $oliveOil)
+        let sugarTile = IngredientSelectionTile(title: "Sugar", minVal: 0, maxVal: 4, unit: "%", precision: 2, value: $draftRecipe.sugar)
+        let oliveOilTile = IngredientSelectionTile(title: "Olive oil", minVal: 0, maxVal: 4, unit: "%", precision: 2, value: $draftRecipe.oliveOil)
         
         NavigationStack {
             VStack(alignment: .leading) {

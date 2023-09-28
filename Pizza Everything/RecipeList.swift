@@ -16,13 +16,20 @@ struct RecipeList: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                ZStack(alignment: .bottom) {
-                    Image(.pizzaHeader)
-                        .resizable()
-                        .frame(height: 300)
-                        .bottomBlur()
-                        .overlay(alignment: .bottomLeading) {
+            ScrollView {
+                VStack {
+                    GeometryReader { geometry in
+                        var minY = geometry.frame(in: .global).minY
+                        var moveWithImageOffset = minY > 0 ? -minY : (minY < -120 ? -minY - 120 : 0)
+                        
+                        ZStack(alignment: .bottomLeading) {
+                            Image(.pizzaHeader)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .bottomBlur()
+                                .offset(y: moveWithImageOffset)
+                                .frame(width: geometry.size.width,  height: geometry.size.height + (minY > 0 ? minY : 0))
+                            
                             VStack(alignment: .leading) {
                                 Text("Pizza")
                                     .font(.largeTitle)
@@ -31,38 +38,60 @@ struct RecipeList: View {
                                 Text("Flour, Water, Yeast, Salt")
                                     .foregroundStyle(.white)
                                     .opacity(0.8)
-                            }.padding()
-                        }
-                }
+                            }
+                            .offset(y: -50 + moveWithImageOffset)
+                            .padding()
+                            
+                            Button {
+                                showNewRecipe.toggle()
                 
-                IngredientSelectionTile(title: "Number of doughs", minVal: 1, maxVal: 10, unit: "", value: $numberOfBalls).padding(.horizontal)
-                IngredientSelectionTile(title: "Weight of 1 pizza dough", minVal: 100, maxVal: 350, unit: "g", value: $totalWeight)
-                    .padding(.horizontal)
-                ScrollView {
+                            } label: {
+                                Image(systemName: "plus")
+                                    .foregroundStyle(.gray)
+                                    .padding(3)
+                                    .background(.white)
+                                    .clipShape(Circle())
+                            }
+                            .offset(x: geometry.size.width - 50, y: -geometry.size.height + 85)
+                            .offset(y: minY > 0 ? -minY-minY : -minY)
+                        }.overlay(alignment: .bottom) {
+                            VStack {
+                                Stepper(value: $numberOfBalls) {
+                                    Text("\(Int(numberOfBalls))").bold().underline() + Text(" dough balls")
+                                }
+                                HStack {
+                                    Text("\(Int(totalWeight))").bold().underline() + Text(" g")
+                                    Spacer()
+                                    Slider(value: $totalWeight, in: 100...350, step: 1) {
+                                        Text("total weight")
+                                    }.frame(maxWidth: geometry.size.width * 0.7)
+                                }
+                            }
+                            .padding()
+                            .background(.thinMaterial)
+                            .clipShape(RoundedRectangle(cornerRadius: 25))
+                            .padding(.horizontal)
+                            .offset(y: 50 + moveWithImageOffset)
+                        }
+                    }
+                    .frame(height: 300)
+                    .shadow(radius: 4)
+                    .zIndex(2)
+                    .padding(.bottom, 50)
+                    
                     VStack(spacing: 20) {
-                        ForEach(recipes, id: \.self) { recipe in
+                        ForEach(recipes) { recipe in
                             RecipeViewer(totalWeight: totalWeight * numberOfBalls, recipe: recipe)
                         }
                     }.padding()
                 }
+                
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        showNewRecipe.toggle()
-                    } label: {
-                        Image(systemName: "plus")
-                            .foregroundStyle(.gray)
-                            .padding(3)
-                            .background(.white)
-                            .clipShape(Circle())
-                    }
-                }
-            }
+            .ignoresSafeArea(.container, edges: .top)
+            .statusBar(hidden: true)
             .sheet(isPresented: $showNewRecipe) {
                 NewRecipeView()
             }
-            .ignoresSafeArea()
         }
     }
 }

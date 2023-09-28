@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-struct Recipe: Equatable, Hashable {
+final class Recipe: Identifiable {
     
+    var id = UUID()
     var title: String
     var hydration: Float
     var salt: Float
@@ -24,16 +25,9 @@ struct Recipe: Equatable, Hashable {
         self.sugar = sugar
         self.oliveOil = oliveOil
     }
-    
-    init() {
-        self.title = "Insert title"
-        self.hydration = 65
-        self.salt = 3
-        self.freshYeast = 0.1
-        self.sugar = 0
-        self.oliveOil = 0
-    }
-    
+}
+
+extension Recipe {
     func calculateFlourFrom(totalWeigth: Float) -> Float {
         return totalWeigth / ((hydration/100) + 1)
     }
