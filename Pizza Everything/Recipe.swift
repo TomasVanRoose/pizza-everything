@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-final class Recipe: Identifiable {
+@Observable final class Recipe: Identifiable {
     
     var id = UUID()
     var title: String

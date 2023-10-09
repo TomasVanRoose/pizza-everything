@@ -34,24 +34,47 @@ extension View {
     }
 }
 
+ let recipes = [
+    Recipe(title: "Experimentation", hydration: 65, salt: 3, freshYeast: 0.01, sugar: 1, oliveOil: 2),
+    Recipe(title: "Enzo", hydration: 60, salt: 2.6, freshYeast: 0.03, sugar: 1, oliveOil: 2),
+    Recipe(title: "12 hour", hydration: 70, salt: 3, freshYeast: 0.01, sugar: 1, oliveOil: 2)
+]
+
 struct ContentView: View {
+    
+    @State var isPresenting = false
     
     var body: some View {
         TabView {
-            RecipeList(recipes: [Recipe(title: "Experimentation", hydration: 65, salt: 3, freshYeast: 0.01, sugar: 1, oliveOil: 2),
-                                 Recipe(title: "Enzo", hydration: 60, salt: 2.6, freshYeast: 0.03, sugar: 1, oliveOil: 2),
-                                 Recipe(title: "12 hour", hydration: 70, salt: 3, freshYeast: 0.01, sugar: 1, oliveOil: 2)
-                                ])
+            NavigationStack {
+                ScrollView() {
+                    LazyVStack(spacing: 20) {
+                        ForEach(recipes) { recipe in
+                            RecipeTemplateCard(template: recipe)
+                        }
+                    }
+                    .padding()
+                }
+                .navigationTitle("Recipe templates")
+                .toolbar {
+                    ToolbarItem(placement: .primaryAction)
+                    {
+                        Button("Add", systemImage: "plus") {
+                            isPresenting = true
+                        }
+                    }
+                }
+                .sheet(isPresented: $isPresenting, content: {
+                    NewRecipeView()
+                })
+            }
             .tabItem {
-                Label("Recipes", systemImage: "newspaper")
+                Label("Templates", systemImage: "newspaper")
             }
             Text("Pizza")
                 .tabItem {
-                    Image(.pizzaIcon)
-                        .resizable()
-                        .frame(width: 35, height: 35)
-                        .scaledToFit()
-                    Text("Pizza")
+                    Image(.pizza)
+                    Text("Pizza's")
                 }
         }
 
@@ -59,6 +82,7 @@ struct ContentView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
+    
     static var previews: some View {
         ContentView()
     }

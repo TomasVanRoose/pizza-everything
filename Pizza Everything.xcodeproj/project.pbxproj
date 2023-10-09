@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C339BC4C2AD4466900408DFA /* RecipeTemplateCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C339BC4B2AD4466900408DFA /* RecipeTemplateCard.swift */; };
+		C3759A162AC573DA00BABDB8 /* FlourShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3759A152AC573DA00BABDB8 /* FlourShape.swift */; };
 		C3D12F442A8A69B2006705DB /* Pizza_EverythingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D12F432A8A69B2006705DB /* Pizza_EverythingApp.swift */; };
 		C3D12F462A8A69B2006705DB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D12F452A8A69B2006705DB /* ContentView.swift */; };
 		C3D12F482A8A69B3006705DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3D12F472A8A69B3006705DB /* Assets.xcassets */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C339BC4B2AD4466900408DFA /* RecipeTemplateCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTemplateCard.swift; sourceTree = "<group>"; };
+		C3759A152AC573DA00BABDB8 /* FlourShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlourShape.swift; sourceTree = "<group>"; };
 		C3D12F402A8A69B2006705DB /* Pizza Everything.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pizza Everything.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3D12F432A8A69B2006705DB /* Pizza_EverythingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pizza_EverythingApp.swift; sourceTree = "<group>"; };
 		C3D12F452A8A69B2006705DB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -63,11 +67,13 @@
 			children = (
 				C3D12F432A8A69B2006705DB /* Pizza_EverythingApp.swift */,
 				C3D12F452A8A69B2006705DB /* ContentView.swift */,
+				C339BC4B2AD4466900408DFA /* RecipeTemplateCard.swift */,
 				C3D12F592A8D3DB2006705DB /* Recipe.swift */,
 				C3D12F552A8D018A006705DB /* RecipeList.swift */,
 				C3D12F572A8D0AFA006705DB /* NewRecipeView.swift */,
 				C3D12F532A8CE090006705DB /* RecipeViewer.swift */,
 				C3D12F512A8CBBED006705DB /* IngredientSelectionTile.swift */,
+				C3759A152AC573DA00BABDB8 /* FlourShape.swift */,
 				C3D12F472A8A69B3006705DB /* Assets.xcassets */,
 				C3D12F492A8A69B3006705DB /* Preview Content */,
 			);
@@ -158,7 +164,9 @@
 				C3D12F562A8D018A006705DB /* RecipeList.swift in Sources */,
 				C3D12F582A8D0AFA006705DB /* NewRecipeView.swift in Sources */,
 				C3D12F522A8CBBED006705DB /* IngredientSelectionTile.swift in Sources */,
+				C339BC4C2AD4466900408DFA /* RecipeTemplateCard.swift in Sources */,
 				C3D12F542A8CE090006705DB /* RecipeViewer.swift in Sources */,
+				C3759A162AC573DA00BABDB8 /* FlourShape.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,10 +292,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Pizza Everything/Preview Content\"";
-				DEVELOPMENT_TEAM = SJ2775C239;
+				DEVELOPMENT_TEAM = Y897R5G5A9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -302,8 +311,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.napoli.pizza;
+				PRODUCT_BUNDLE_IDENTIFIER = com.napoli.be.pizza;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -315,10 +325,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Pizza Everything/Preview Content\"";
-				DEVELOPMENT_TEAM = SJ2775C239;
+				DEVELOPMENT_TEAM = Y897R5G5A9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -333,8 +344,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.napoli.pizza;
+				PRODUCT_BUNDLE_IDENTIFIER = com.napoli.be.pizza;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
